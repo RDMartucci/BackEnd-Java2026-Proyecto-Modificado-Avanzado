@@ -6,6 +6,7 @@ public class ArticuloResponseDTO {
     private Long id;
     private String nombre;
     private String descripcion;
+    private Integer enStock;
     private Double precio;
     private Long categoriaId;
     private String categoriaNombre;
@@ -14,13 +15,14 @@ public class ArticuloResponseDTO {
     }
 
   
-    public ArticuloResponseDTO(Long id, String nombre, Double precio, Long categoriaId, String categoriaNombre, String descripcion) {
+    public ArticuloResponseDTO(Long id, String nombre, Double precio, Long categoriaId, String categoriaNombre, String descripcion, Integer enStock) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.categoriaId = categoriaId;
         this.categoriaNombre = categoriaNombre;
         this.descripcion = descripcion;
+        this.enStock = enStock;
     }
 
     public Long getId() {
@@ -69,5 +71,13 @@ public class ArticuloResponseDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEnStock() {
+        return enStock;
+    }
+
+    public void setEnStock(Integer enStock) {
+        this.enStock = enStock;
     }
 }

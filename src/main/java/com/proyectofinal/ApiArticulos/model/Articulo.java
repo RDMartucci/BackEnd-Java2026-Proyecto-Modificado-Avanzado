@@ -11,6 +11,7 @@ public class Articulo {
 
     private String nombre;
     private String descripcion;
+    private Integer enStock;
     
     private Double precio;
 
@@ -23,10 +24,16 @@ public class Articulo {
     public Articulo() {
     }
 
-    // Constructor con parámetros
-    public Articulo(String nombre,  String descripcion,Double precio,Categoria categoria) {
+    // Constructor con parámetros sin descripción
+    public Articulo(String nombre, Double precio, Categoria categoria) {
+        this(nombre, null, null, precio, categoria);
+    }
+
+    // Constructor con parámetros incluyendo descripción y stock
+    public Articulo(String nombre, String descripcion, Integer enStock, Double precio, Categoria categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.enStock = enStock;
         this.precio = precio;
         this.categoria = categoria;
     }
@@ -71,6 +78,13 @@ public class Articulo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
+    public Integer getEnStock() {
+        return enStock;
+    }
+
+    public void setEnStock(Integer enStock) {
+        this.enStock = enStock;
+    }
 
 }

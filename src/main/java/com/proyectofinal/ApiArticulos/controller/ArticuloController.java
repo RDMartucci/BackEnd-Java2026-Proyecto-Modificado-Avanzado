@@ -64,10 +64,11 @@ public class ArticuloController {
 
         Articulo articulo = new Articulo(
                 articuloDTO.getNombre(),
+                articuloDTO.getDescripcion(),
+                articuloDTO.getEnStock(),
                 articuloDTO.getPrecio(),
                 categoriaOpt.get()
         );
-        articulo.setDescripcion(articuloDTO.getDescripcion());
 
         Articulo creado = articuloService.guardarArticulo(articulo);
         return ResponseEntity.ok(toResponseDTO(creado));
@@ -92,11 +93,12 @@ public class ArticuloController {
 
         Articulo articulo = new Articulo(
                 articuloDTO.getNombre(),
+                articuloDTO.getDescripcion(),
+                articuloDTO.getEnStock(),
                 articuloDTO.getPrecio(),
                 categoriaOpt.get()
         );
         articulo.setId(id);
-        articulo.setDescripcion(articuloDTO.getDescripcion());
 
         Articulo actualizado = articuloService.actualizarArticulo(id, articulo);
         return ResponseEntity.ok(toResponseDTO(actualizado));
@@ -109,7 +111,8 @@ public class ArticuloController {
                 articulo.getPrecio(),
                 articulo.getCategoria() != null ? articulo.getCategoria().getId() : null,
                 articulo.getCategoria() != null ? articulo.getCategoria().getNombre() : null,
-                articulo.getDescripcion()
+                articulo.getDescripcion(),
+                articulo.getEnStock()
         );
     }
 

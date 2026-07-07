@@ -5,6 +5,7 @@ public class ArticuloDTO {
 
     private String nombre;  
     private String descripcion;
+    private Integer enStock;
     private Double precio;  
     private Long categoriaId;
 
@@ -13,9 +14,10 @@ public class ArticuloDTO {
     }
 
     // Constructor con parámetros para inicializar un objeto ArticuloDTO con nombre, precio y categoría.
-    public ArticuloDTO(String nombre, String descripcion, Double precio, Long categoriaId ) {
+    public ArticuloDTO(String nombre, String descripcion, Integer enStock, Double precio, Long categoriaId) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.enStock = enStock;
         this.precio = precio;
         this.categoriaId = categoriaId;
     }
@@ -51,5 +53,13 @@ public class ArticuloDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getEnStock() {
+        return enStock;
+    }
+
+    public void setEnStock(Integer enStock) {
+        this.enStock = enStock;
     }
 }
