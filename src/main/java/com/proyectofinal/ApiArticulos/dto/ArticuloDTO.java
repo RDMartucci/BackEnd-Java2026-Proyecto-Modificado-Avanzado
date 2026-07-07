@@ -1,0 +1,45 @@
+package com.proyectofinal.ApiArticulos.dto;
+
+// clase ArticuloDTO que representa un objeto de transferencia de datos para un artículo.
+public class ArticuloDTO {
+
+    private String nombre;  
+    private Double precio;  
+    private Long categoriaId;
+
+    // Constructor vacío necesario para la deserialización de JSON a objeto Java.
+    public ArticuloDTO() {
+    }
+
+    // Constructor con parámetros para inicializar un objeto ArticuloDTO con nombre, precio y categoría.
+    public ArticuloDTO(String nombre, Double precio, Long categoriaId) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoriaId = categoriaId;
+    }
+
+    // Getters y setters para los campos de la clase.
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Long getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(Long categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+}
