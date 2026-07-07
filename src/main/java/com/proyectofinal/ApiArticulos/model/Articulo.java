@@ -10,19 +10,23 @@ public class Articulo {
     private Long id;
 
     private String nombre;
+    private String descripcion;
+    
     private Double precio;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    
+
+        
     // Constructor vacío
     public Articulo() {
     }
 
     // Constructor con parámetros
-    public Articulo(String nombre, Double precio,Categoria categoria) {
+    public Articulo(String nombre,  String descripcion,Double precio,Categoria categoria) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
     }
@@ -58,6 +62,14 @@ public class Articulo {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
 
