@@ -4,6 +4,9 @@
 
 API REST desarrollada en Java y con Spring Boot para la gestión de artículos. Proyecto educativo de la carrera TalentoTech.
 
+-> Se modifico para usar DTO en Artículos.
+-> Se modificó para usar DTO en categorías
+
 ## 🎯 Descripción del Proyecto
 
 **API Artículos** es una aplicación backend que proporciona una API REST completa para gestionar artículos. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos de artículos, con validaciones y gestión de errores.
