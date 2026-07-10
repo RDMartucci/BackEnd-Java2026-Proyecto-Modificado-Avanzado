@@ -5,7 +5,13 @@
 API REST desarrollada en Java y con Spring Boot para la gestión de artículos. Proyecto educativo de la carrera TalentoTech.
 
 -> Se modifico para usar DTO en Artículos.
--> Se modificó para usar DTO en categorías
+-> Se modificó para usar DTO en categorías.
+-> Se agregó paquete Usuario.
+-> Se agregó DTO para usuario, login y registro de usuarios.
+-> Se agregó pack de Spring Security.
+-> Se agregó token de autenticación JWT.
+ 
+
 
 ## 🎯 Descripción del Proyecto
 
