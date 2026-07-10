@@ -18,10 +18,10 @@ public class ApiArticulosApplication {
 	@Bean
 	CommandLineRunner initAdminUser(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
 		return args -> {
-			if (!usuarioRepository.existsByEmail("admin@example.com")) {
+			if (!usuarioRepository.existsByEmail("admin@gmail.com")) {
 				Usuario admin = new Usuario();
 				admin.setNombre("Admin");
-				admin.setEmail("admin@example.com");
+				admin.setEmail("admin@gmail.com");
 				admin.setPassword(passwordEncoder.encode("admin123"));
 				admin.setRol("ADMIN");
 				admin.setActivo(true);
