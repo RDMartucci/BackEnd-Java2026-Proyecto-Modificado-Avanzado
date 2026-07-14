@@ -33,16 +33,19 @@ USE `articulos2_db`;
 -- Estructura de tabla para la tabla `articulos`
 --
 
-CREATE TABLE `articulos2` (
+CREATE TABLE `articulos` (
   `id` bigint(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `precio` double NOT NULL,
-  `categoria_id` bigint(20) DEFAULT NULL
+  `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `articulos`
 --
+
+-- INSERT INTO `articulos` (`id`, `nombre`, `precio`) VALUES
+-- (2, 'Cuaderno Nuevo Tapa Roja', 900),
+-- (6, 'Coca Cola', 4500);
 
 --
 -- Índices para tablas volcadas
@@ -51,7 +54,7 @@ CREATE TABLE `articulos2` (
 --
 -- Indices de la tabla `articulos`
 --
-ALTER TABLE `articulos2`
+ALTER TABLE `articulos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -61,25 +64,10 @@ ALTER TABLE `articulos2`
 --
 -- AUTO_INCREMENT de la tabla `articulos`
 --
-ALTER TABLE `articulos2`
+ALTER TABLE `articulos`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
--- Tabla Categorias
-CREATE TABLE `categorias` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `categorias`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1; 
-

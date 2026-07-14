@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // Anotaciones de Spring Boot para manejar solicitudes HTTP y permitir CORS
-@CrossOrigin(origins = "*") // Permite solicitudes desde cualquier origen (CORS). 
+@CrossOrigin(origins = "http://localhost:3306") // Permite solicitudes desde cualquier origen (CORS). 
 // Si se quiere restringir, se puede cambiar el valor de origins a un dominio específico, 
 // por ejemplo: "http://localhost:3000"
 @RestController // Expone métodos como API REST
