@@ -21,10 +21,19 @@ services:
       - mariadb_data:/var/lib/mysql
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
+    test:
+    [
+      "CMD",
+      "mysqladmin",
+      "ping",
+      "-h",
+      "localhost",
+      "-uroot",
+      "-p${MARIADB_ROOT_PASSWORD}"
+    ]
+    interval: 10s
+    timeout: 5s
+    retries: 10
 
     networks:
       - apiarticulos-network
