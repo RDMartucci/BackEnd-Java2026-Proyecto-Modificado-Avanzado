@@ -20,8 +20,12 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
+  //  @Column(nullable = false)
+  //  private String rol = "USER";
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String rol = "USER";
+    private Rol rol = Rol.USER;
 
     @Column(nullable = false)
     private boolean activo = true;
@@ -32,7 +36,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String email, String password, String rol) {
+    public Usuario(String nombre, String email, String password, Rol rol) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
@@ -71,11 +75,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 

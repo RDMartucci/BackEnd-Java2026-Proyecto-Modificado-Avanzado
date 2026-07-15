@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service // Marca la clase como servicio de Spring
-public class ArticuloServiceImplemets implements ArticuloService {
+public class ArticuloServiceImpl implements ArticuloService {
 
     private final ArticuloRepository articuloRepository;
 
     @Autowired
-    public ArticuloServiceImplemets(ArticuloRepository articuloRepository) {
+    public ArticuloServiceImpl(ArticuloRepository articuloRepository) {
         this.articuloRepository = articuloRepository;
     }
 
