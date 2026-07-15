@@ -44,6 +44,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/categorias/**").authenticated()
                 .requestMatchers("/api/articulos/**").authenticated()
                 .requestMatchers("/api/categorias/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/pedidos").authenticated()
+                .requestMatchers("/api/pedidos/mis-pedidos").authenticated()
+                .requestMatchers("/api/pedidos").hasRole("ADMIN") // Solo el admin ve todos los pedidos
                 .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
