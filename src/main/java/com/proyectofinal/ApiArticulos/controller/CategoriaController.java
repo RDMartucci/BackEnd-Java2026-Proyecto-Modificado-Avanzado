@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import jakarta.validation.Valid;
 
 // Anotaciones de Spring Boot para manejar solicitudes HTTP y permitir CORS
 @CrossOrigin(origins = "http://localhost:3306") // Permite solicitudes desde cualquier origen (CORS). 
@@ -26,7 +27,7 @@ public class CategoriaController {
 
     private final CategoriaService categoriaService;
 
-    @Autowired
+    @Autowired  
     public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
     }
@@ -52,7 +53,7 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoriaResponseDTO> crear(@RequestBody CategoriaDTO categoriaDTO) {
+    public ResponseEntity<CategoriaResponseDTO> crear(@Valid @RequestBody CategoriaDTO categoriaDTO) {
         if (categoriaDTO.getNombre() == null || categoriaDTO.getNombre().isEmpty()) {
             System.out.println("El nombre de la categoría no puede estar vacío.");
             return ResponseEntity.badRequest().build();
@@ -65,7 +66,7 @@ public class CategoriaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoriaResponseDTO> actualizar(@PathVariable Long id, @RequestBody CategoriaDTO categoriaDTO) {
+    public ResponseEntity<CategoriaResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody CategoriaDTO categoriaDTO) {
         System.out.println("Actualizando categoría con ID: " + id);
         System.out.println("Nueva información de la categoría: " + categoriaDTO.getNombre());
 
