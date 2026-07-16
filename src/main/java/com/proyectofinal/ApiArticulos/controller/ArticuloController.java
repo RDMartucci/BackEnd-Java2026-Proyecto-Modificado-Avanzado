@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import jakarta.validation.Valid;
+
 
 @CrossOrigin(origins = "*") // Permite solicitudes desde cualquier origen (CORS). 
 // Si se quiere restringir, se puede cambiar el valor de origins a un dominio específico, 
@@ -34,7 +36,6 @@ public class ArticuloController {
     @GetMapping
     public List<ArticuloResponseDTO> listar() {
         var articulos = articuloService.listarArticulos();
-        
         return articulos.stream()
             .map(this::toResponseDTO)
             .collect(Collectors.toList());
@@ -49,14 +50,7 @@ public class ArticuloController {
     }
 
     @PostMapping
-    public ResponseEntity<ArticuloResponseDTO> crear(@RequestBody ArticuloDTO articuloDTO) {
-        if (articuloDTO.getNombre() == null || articuloDTO.getNombre().isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        if (articuloDTO.getCategoriaId() == null) {
-            return ResponseEntity.badRequest().build();
-        }
-
+    public ResponseEntity<ArticuloResponseDTO> crear(@Valid @RequestBody ArticuloDTO articuloDTO) {
         var categoriaOpt = categoriaService.obtenerCategoriaPorId(articuloDTO.getCategoriaId());
         if (categoriaOpt.isEmpty()) {
             return ResponseEntity.badRequest().build();
@@ -75,7 +69,7 @@ public class ArticuloController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ArticuloResponseDTO> actualizar(@PathVariable Long id, @RequestBody ArticuloDTO articuloDTO) {
+    public ResponseEntity<ArticuloResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody ArticuloDTO articuloDTO) {
         if (articuloService.obtenerArticuloPorId(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         }

@@ -1,8 +1,15 @@
 package com.proyectofinal.ApiArticulos.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class CategoriaDTO {
 
+    @NotBlank(message = "El nombre es obligatorio")
+    @Size(min = 3, max = 80)
     private String nombre;
+
+    @Size(max=200)
     private String descripcion;
 
     public CategoriaDTO() {

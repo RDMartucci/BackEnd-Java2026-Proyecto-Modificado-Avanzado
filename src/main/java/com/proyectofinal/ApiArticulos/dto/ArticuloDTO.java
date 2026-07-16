@@ -1,23 +1,42 @@
 package com.proyectofinal.ApiArticulos.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+
 // clase ArticuloDTO que representa un objeto de transferencia de datos para un artículo.
 public class ArticuloDTO {
 
-    private String nombre;  
-    private String descripcion;
-    private Integer enStock;
-    private Double precio;  
-    private Long categoriaId;
+@NotBlank(message = "El nombre es obligatorio")
+@Size(min = 3, max = 100)
+private String nombre;
+
+@NotBlank(message = "La descripción es obligatoria")
+@Size(max = 500)
+private String descripcion;
+
+@NotNull(message = "Debe indicar un precio")
+@Positive(message = "El precio debe ser mayor a cero")
+private Double precio;
+
+@NotNull(message = "Debe indicar el stock")
+@PositiveOrZero(message = "El stock no puede ser negativo")
+private Integer stock;
+
+@NotNull(message = "Debe indicar una categoría")
+private Long categoriaId;
 
     // Constructor vacío necesario para la deserialización de JSON a objeto Java.
     public ArticuloDTO() {
     }
 
     // Constructor con parámetros para inicializar un objeto ArticuloDTO con nombre, precio y categoría.
-    public ArticuloDTO(String nombre, String descripcion, Integer enStock, Double precio, Long categoriaId) {
+    public ArticuloDTO(String nombre, String descripcion, Integer Stock, Double precio, Long categoriaId) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.enStock = enStock;
+        this.stock = Stock;
         this.precio = precio;
         this.categoriaId = categoriaId;
     }

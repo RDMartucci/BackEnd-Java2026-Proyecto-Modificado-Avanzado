@@ -2,7 +2,7 @@ package com.proyectofinal.ApiArticulos.dto;
 //Para recibir un artículo y su cantidad en la compra.
 
 
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.NotNull;
 
 public class DetallePedidoDTO {
@@ -11,7 +11,7 @@ public class DetallePedidoDTO {
     private Long articuloId;
 
     @NotNull(message = "La cantidad es obligatoria")
-    @Min(value = 1, message = "La cantidad mínima debe ser 1")
+    @Positive(message = "La cantidad debe ser un número positivo")
     private Integer cantidad;
 
     // Getters y Setters
