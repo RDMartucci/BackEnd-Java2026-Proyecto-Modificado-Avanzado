@@ -23,7 +23,7 @@ private Double precio;
 
 @NotNull(message = "Debe indicar el stock")
 @PositiveOrZero(message = "El stock no puede ser negativo")
-private Integer stock;
+private Integer enStock;
 
 @NotNull(message = "Debe indicar una categoría")
 private Long categoriaId;
@@ -36,7 +36,7 @@ private Long categoriaId;
     public ArticuloDTO(String nombre, String descripcion, Integer Stock, Double precio, Long categoriaId) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.stock = Stock;
+        this.enStock = Stock;
         this.precio = precio;
         this.categoriaId = categoriaId;
     }
