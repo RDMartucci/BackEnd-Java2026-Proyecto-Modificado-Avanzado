@@ -9,11 +9,15 @@ import com.proyectofinal.ApiArticulos.repository.UsuarioRepository;
 import com.proyectofinal.ApiArticulos.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationServiceException;
+//import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.proyectofinal.ApiArticulos.exception.CredencialesInvalidasException;
+import com.proyectofinal.ApiArticulos.exception.EmailYaRegistradoException;
+import com.proyectofinal.ApiArticulos.exception.UsuarioNoEncontradoException;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -42,7 +46,8 @@ public class AuthServiceImpl implements AuthService {
     public AuthResponseDTO register(RegisterRequestDTO request) {
 
         if (usuarioRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("El correo ya está registrado");
+            //throw new RuntimeException("El correo ya está registrado");
+            throw new EmailYaRegistradoException("El correo ya está registrado");
         }
 
         Rol rol = Rol.USER;
@@ -50,7 +55,8 @@ public class AuthServiceImpl implements AuthService {
         if ("ADMIN".equalsIgnoreCase(request.getRol())) {
 
             if (!adminSecret.equals(request.getCodigoAdmin())) {
-                throw new RuntimeException("Código de administrador incorrecto");
+                //throw new RuntimeException("Código de administrador incorrecto");
+             throw new CredencialesInvalidasException("Código de administrador incorrecto");
             }
 
             rol = Rol.ADMIN;
@@ -88,13 +94,12 @@ public class AuthServiceImpl implements AuthService {
 
         } catch (AuthenticationException ex) {
 
-            throw new AuthenticationServiceException("Credenciales inválidas");
+            throw new CredencialesInvalidasException("Credenciales inválidas");
 
         }
 
         Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
+            .orElseThrow(() -> new UsuarioNoEncontradoException("No existe un usuario con el email: " + request.getEmail()));
         String token = jwtUtil.generateToken(
                 usuario.getEmail(),
                 usuario.getRol().name());

@@ -15,6 +15,18 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> manejarRuntime(
+                RuntimeException ex,
+                HttpServletRequest request) {
+
+        return construirError(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage(),
+                request.getRequestURI());
+    }
+
     /*
      * ============================================================
      * VALIDACIONES (@Valid)
